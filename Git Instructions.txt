@@ -1,0 +1,5 @@
+1. Navigate to C:/xampp/htdocs/Gift.Me
+2. Right click and "Git Bash Here"
+3. "Git pull" to pull the latest files down from the repository (do this every day, always pull before you commit/push!!!)
+4. "Git commit -m "message to explain what you've done"
+5. "Git push"
