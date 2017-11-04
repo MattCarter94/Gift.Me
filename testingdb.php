@@ -7,6 +7,7 @@
         
        <?php include "dbconnect.inc" ;
         $sql = "SELECT * FROM users";
+       
         $result = $connect->query($sql);
         
         if ($result->num_rows > 0) {
