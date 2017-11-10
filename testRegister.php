@@ -5,6 +5,10 @@
     </head>
     <body>
         <form action="testRegisterPost.php" method="post">
+            <?php if($_GET["user"]){
+                echo 'Sorry this username already exists!';
+            }
+            ?><br><br>
             First name:<br>
             <input type="text" name="firstname" placeholder="First name" required>
             <br>
