@@ -16,11 +16,9 @@
         echo "New record created successfully";
     } else {
         /*** if username already exists ***/
-        $error = (string) $connect->error;
-        if(strpos($error, 'Duplicate entry') !== false){
+        if($connect->errno === 1062){
             header('Location: testRegister.php?user=exists');
         }
-        
         echo "Error: " . $sql . "<br> desc: " . $connect->error;
     }
 
