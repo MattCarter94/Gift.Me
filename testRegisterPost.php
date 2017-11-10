@@ -7,13 +7,6 @@
     /*** connect to database ***/
     include "dbconnect.inc" ;
 
-    /*** don't need to check twice, mysql does it already
-    $query = "SELECT * FROM users WHERE username='$username'";
-    $result = $connect->query($query);
-    if ($result->num_rows > 0) {
-        echo 'Sorry, this username already exists!';
-        header('Location: testRegister.php?user=exists');
-    } ***/
     /*** set up what needs to be inserted into the database ***/
     $sql = "INSERT INTO users (first_name, last_name, username, password)
             VALUES ('$firstname', '$lastname', '$username', '$password')";
@@ -22,7 +15,13 @@
     if ($connect->query($sql) === TRUE) {
         echo "New record created successfully";
     } else {
-        echo "Error: " . $sql . "<br>" . $connect->error;
+        /*** if username already exists ***/
+        $error = (string) $connect->error;
+        if(strpos($error, 'Duplicate entry') !== false){
+            header('Location: testRegister.php?user=exists');
+        }
+        
+        echo "Error: " . $sql . "<br> desc: " . $connect->error;
     }
 
     /*** disconnect from database ***/
