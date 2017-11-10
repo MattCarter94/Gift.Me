@@ -7,7 +7,7 @@
     /*** connect to database ***/
     include "dbconnect.inc" ;
     /*** set up what needs to be inserted into the database ***/
-    $sql = "INSERT INTO users (first_name, surname, username, Password)
+    $sql = "INSERT INTO users (first_name, last_name, username, password)
             VALUES ('$firstname', '$lastname', '$username', '$password')";
 
     /*** insert into db, with error if fails ***/
